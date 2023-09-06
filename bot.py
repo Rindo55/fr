@@ -50,7 +50,7 @@ async def start(bot, cmd: Message):
             except (Error, UnicodeDecodeError):
                 file_id = int(usr_cmd.split("_")[-1])
             GetMessage = await app.get_messages(kay_id, message_ids=file_id)
-            message_ids = GetMessage.id
+            message_ids = GetMessage.message_id
             await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
         except Exception as err:
             await cmd.reply_text(f"Something went wrong!\n\n**Error:** `XXXXXXX`")
