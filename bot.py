@@ -54,7 +54,7 @@ async def start(bot, cmd: Message):
             await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
         except Exception as err:
             await cmd.reply_text(f"Something went wrong!\n\n**Error:** `XXXXXXX`")
-@app.on_message(filters.command("send")
+@app.on_message(filters.command("send"))
 async def stdart(bot, message: Message):
   sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: ` Ikenaikyo - 01 [720p x265] @animxt.mkv`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English, Portuguese (Brazil), Spanish (Latin America), Spanish, French, German, Italian, Russian` + "\n" + "**‣ File Size**: `92 MBs` + "\n" + **‣ Duration:** `24 minutes 42 seconds` + "\n" + ** ‣ Downloads:** [🔗Telegram File](https://telegram.me/somayukibot?start=animxt_MjQ1Nw==) 🔗[BETA DL](https://da.gd/ll0oCI)"       
   untextx = await app.send_message(
