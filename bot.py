@@ -54,13 +54,40 @@ async def start(bot, cmd: Message):
             await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
         except Exception as err:
             await cmd.reply_text(f"Something went wrong!\n\n**Error:** `XXXXXXX`")
+repl_markup=InlineKeyboardMarkup(
+
+            [
+
+                [
+
+                    InlineKeyboardButton(
+
+                        text="🐌TG FILE",
+
+                        url="https://telegram.me/somayukibot?start=animxt_MjQ1Nw==",
+
+                    ),
+
+                    InlineKeyboardButton(
+
+                        text="🚀BETA DL",
+
+                        url="https://da.gd/ll0oCI",
+
+                    ),
+  
+                ],
+                    
+            ],
+        )
 @app.on_message(filters.command("send"))
 async def stdart(bot, message: Message):
-  sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `Ikenaikyo - 01 [720p x265] @animxt.mkv`" + "\n" + f"**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + f"**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English, Portuguese (Brazil), Spanish (Latin America), Spanish, French, German, Italian, Russian`" + "\n" + f"**‣ File Size**: `92 MBs`" + "\n" + f"**‣ Duration:** `24 minutes 42 seconds`" + "\n" + f"** ‣ Downloads:** [🔗Telegram File](https://telegram.me/somayukibot?start=animxt_MjQ1Nw==) 🔗[BETA DL](https://da.gd/ll0oCI)"       
+  sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `Ikenaikyo - 01 [720p x265] @animxt.mkv`" + "\n" + f"**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + f"**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English, Portuguese (Brazil), Spanish (Latin America), Spanish, French, German, Italian, Russian`" + "\n" + f"**‣ File Size**: `92 MBs`" + "\n" + f"**‣ Duration:** `24 minutes 42 seconds`" + "\n" + f"**‣ Downloads:** [🔗Telegram File](https://telegram.me/somayukibot?start=animxt_MjQ1Nw==) 🔗[BETA DL](https://da.gd/ll0oCI)"       
   untextx = await app.send_message(
                       chat_id=-1001159872623,
                       text=sourcetext,
-                      reply_to_message_id=35196
+                      reply_to_message_id=35196,
+                      reply_markup=repl_markup
 )            
             
 @app.on_message(filters.command("link") & filters.private)
