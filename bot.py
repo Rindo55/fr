@@ -59,7 +59,7 @@ async def start(bot, cmd: Message):
                 message_ids = GetMessage.id
                 await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
             else:
-                await app.reply_text("Join the [channel](https://t.me/latest_ongoing_airing_anime) to access the file.", reply_markup=dl_markup)
+                await cmd.reply_text("Join the [channel](https://t.me/latest_ongoing_airing_anime) to access the file.", reply_markup=dl_markup)
         except Exception as err:
             await cmd.reply_text(f"Something went wrong!\n\n**Error:** `{str(err)}`")
 
