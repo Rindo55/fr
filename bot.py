@@ -37,8 +37,6 @@ def str_to_b64(__str: str) -> str:
 
     return b64
 
-from pyrogram import filters, InlineKeyboardMarkup, InlineKeyboardButton, Message, enums
-
 @app.on_message(filters.command("start") & filters.private)
 async def start(bot, cmd: Message):
     usr_cmd = cmd.text.split("_", 1)[-1]
