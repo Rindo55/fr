@@ -7,7 +7,7 @@ import requests
 import aiofiles
 from base64 import standard_b64encode, standard_b64decode
 from pyrogram import Client, filters, idle, enums 
-from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 import logging
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
                     level=logging.WARNING)
