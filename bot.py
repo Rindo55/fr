@@ -41,13 +41,7 @@ def str_to_b64(__str: str) -> str:
 async def start(bot, cmd: Message):
     usr_cmd = cmd.text.split("_", 1)[-1]
     kay_id = -1001642923224
-    dl_markup = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(text="🔗 Channel Link", url=f"https://t.me/latest_ongoing_airing_anime")
-            ]
-        ]
-    )
+
     if usr_cmd == "/start":
         await cmd.reply_text("Bot seems online! ⚡️")
     else:
@@ -55,6 +49,7 @@ async def start(bot, cmd: Message):
             user = await app.get_chat_member(-1001159872623, cmd.from_user.id)
             if user.status == enums.ChatMemberStatus.MEMBER:
                 file_id = int(b64_to_str(usr_cmd).split("_")[-1])
+                idk = (usr_cmd).split("_")[-1]
                 GetMessage = await app.get_messages(kay_id, message_ids=file_id)
                 message_ids = GetMessage.id
                 await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
@@ -69,8 +64,26 @@ async def start(bot, cmd: Message):
                 message_ids = GetMessage.id
                 await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
             elif user.status not in (enums.ChatMemberStatus.MEMBER, enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.OWNER):
+                idk = (usr_cmd).split("_")[-1]  
+                dl_markup = InlineKeyboardMarkup(
+                    [
+                      [
+                        InlineKeyboardButton(text="🔗 Channel", url=f"https://t.me/latest_ongoing_airing_anime"),
+                        InlineKeyboardButton(text="🔄 Retry", url=f"https://t.me/somayukibot?start=animxt_{idk}")
+                      ]
+                    ]
+                )
                 await cmd.reply_text("Join the [channel](https://t.me/latest_ongoing_airing_anime) to access the file.", reply_markup=dl_markup)
         except Exception as err:
+            idk = (usr_cmd).split("_")[-1]  
+            dl_markup = InlineKeyboardMarkup(
+                [
+                  [
+                    InlineKeyboardButton(text="🔗 Channel", url=f"https://t.me/latest_ongoing_airing_anime"),
+                    InlineKeyboardButton(text="🔄 Retry", url=f"https://t.me/somayukibot?start=animxt_{idk}")
+                  ]
+                ]
+            )  
             await cmd.reply_text("Join the [channel](https://t.me/latest_ongoing_airing_anime) to access the file.", reply_markup=dl_markup)
 
 repl_markup=InlineKeyboardMarkup(
