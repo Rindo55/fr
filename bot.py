@@ -52,7 +52,7 @@ async def start(bot, cmd: Message):
         await cmd.reply_text("Bot seems online! ⚡️")
     else:
         try:
-            user = await client.get_chat_member(-1001159872623, cmd.from_user.id)
+            user = await app.get_chat_member(-1001159872623, cmd.from_user.id)
             if user.status == enums.ChatMemberStatus.MEMBER:
                 file_id = int(b64_to_str(usr_cmd).split("_")[-1])
                 GetMessage = await app.get_messages(kay_id, message_ids=file_id)
