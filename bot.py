@@ -49,19 +49,20 @@ async def start(bot, cmd: Message):
         ]
     )
     if usr_cmd == "/start":
-       await cmd.reply_text("Bot seems online! ⚡️")
+        await cmd.reply_text("Bot seems online! ⚡️")
     else:
         try:
             if client.get_chat_member(-1001159872623, message.from_user.id).status == "member":
-              file_id = int(b64_to_str(usr_cmd).split("_")[-1])
-              file_id = int(usr_cmd.split("_")[-1])
-              GetMessage = await app.get_messages(kay_id, message_ids=file_id)
-              message_ids = GetMessage.id
-              await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
+                file_id = int(b64_to_str(usr_cmd).split("_")[-1])
+                file_id = int(usr_cmd.split("_")[-1])
+                GetMessage = await app.get_messages(kay_id, message_ids=file_id)
+                message_ids = GetMessage.id
+                await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
             else:
                 app.reply_text("Join the [channel](https://t.me/latest_ongoing_airing_anime) to access the file.", reply_markup=dl_markup)
         except Exception as err:
             await cmd.reply_text(f"Something went wrong!\n\n**Error:** `XXXXXXX`")
+
 repl_markup=InlineKeyboardMarkup(
 
             [
