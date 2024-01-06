@@ -58,7 +58,17 @@ async def start(bot, cmd: Message):
                 GetMessage = await app.get_messages(kay_id, message_ids=file_id)
                 message_ids = GetMessage.id
                 await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
-            else:
+            elif user.status == enums.ChatMemberStatus.ADMIN:
+                file_id = int(b64_to_str(usr_cmd).split("_")[-1])
+                GetMessage = await app.get_messages(kay_id, message_ids=file_id)
+                message_ids = GetMessage.id
+                await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
+            elif user.status == enums.ChatMemberStatus.OWNER:
+                file_id = int(b64_to_str(usr_cmd).split("_")[-1])
+                GetMessage = await app.get_messages(kay_id, message_ids=file_id)
+                message_ids = GetMessage.id
+                await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
+            elif user.status not in (enums.ChatMemberStatus.MEMBER, enums.ChatMemberStatus.ADMIN, enums.ChatMemberStatus.OWNER):
                 await cmd.reply_text("Join the [channel](https://t.me/latest_ongoing_airing_anime) to access the file.", reply_markup=dl_markup)
         except Exception as err:
             await cmd.reply_text(f"Something went wrong!\n\n**Error:** `{str(err)}`")
