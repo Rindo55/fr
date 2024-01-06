@@ -41,17 +41,25 @@ def str_to_b64(__str: str) -> str:
 async def start(bot, cmd: Message):
     usr_cmd = cmd.text.split("_", 1)[-1]
     kay_id = -1001642923224
+    dl_markup = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(text="🔗 Channel Link", url=f"https://t.me/latest_ongoing_airing_anime")
+            ]
+        ]
+    )
     if usr_cmd == "/start":
        await cmd.reply_text("Bot seems online! ⚡️")
     else:
         try:
-            try:
-                file_id = int(b64_to_str(usr_cmd).split("_")[-1])
-            except (Error, UnicodeDecodeError):
-                file_id = int(usr_cmd.split("_")[-1])
-            GetMessage = await app.get_messages(kay_id, message_ids=file_id)
-            message_ids = GetMessage.id
-            await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
+            if client.get_chat_member(-1001159872623, message.from_user.id).status == "member":
+              file_id = int(b64_to_str(usr_cmd).split("_")[-1])
+              file_id = int(usr_cmd.split("_")[-1])
+              GetMessage = await app.get_messages(kay_id, message_ids=file_id)
+              message_ids = GetMessage.id
+              await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
+            else:
+                app.reply_text("Join the [channel](https://t.me/latest_ongoing_airing_anime) to access the file.", reply_markup=dl_markup)
         except Exception as err:
             await cmd.reply_text(f"Something went wrong!\n\n**Error:** `XXXXXXX`")
 repl_markup=InlineKeyboardMarkup(
