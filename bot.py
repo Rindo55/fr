@@ -71,7 +71,7 @@ async def start(bot, cmd: Message):
             elif user.status not in (enums.ChatMemberStatus.MEMBER, enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.OWNER):
                 await cmd.reply_text("Join the [channel](https://t.me/latest_ongoing_airing_anime) to access the file.", reply_markup=dl_markup)
         except Exception as err:
-            await cmd.reply_text(f"Something went wrong!\n\n**Error:** `{str(err)}`")
+            await cmd.reply_text("Join the [channel](https://t.me/latest_ongoing_airing_anime) to access the file.", reply_markup=dl_markup)
 
 repl_markup=InlineKeyboardMarkup(
 
